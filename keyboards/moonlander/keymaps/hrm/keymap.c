@@ -1,13 +1,17 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
+#include "swapper.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #define TR KC_TRANSPARENT
+#define OS_SHFT MOD_LSFT
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
   ST_MACRO_0,
   ST_MACRO_1,
   ST_MACRO_2,
+  SW_WIN,  // Switch to next window         (alt-tab)
+  SW_TAB,  // Switch to next browser tab    (ctrl-tab)
 };
 
 /*
@@ -25,7 +29,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_AUDIO_MUTE,  KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS, //r1
       KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_AUDIO_VOL_DOWN, //l2
       KC_HYPR,        KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS, //r2
-      MT(MOD_LSFT, KC_ESCAPE), MT(MOD_LSFT, KC_A), MT(MOD_LALT, KC_S), MT(MOD_LCTL, KC_D), LT(1,KC_F), LT(2,KC_G), KC_MEH, //l3
+      MT(MOD_LSFT, KC_ESCAPE), MT(MOD_LSFT, KC_A), MT(MOD_LALT, KC_S), MT(MOD_LCTL, KC_D), LT(1,KC_F), LT(2,KC_G), SW_WIN, //l3
       ST_MACRO_0,     LT(2,KC_H),     LT(1,KC_J),     MT(MOD_RCTL, KC_K),MT(MOD_RALT, KC_L),MT(MOD_RSFT, KC_SCLN),KC_QUOTE, //r3
       KC_LEFT_GUI,    KC_Z,           KC_X,           KC_C,           KC_V,           KC_B, //l4
       KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_LEFT, //r4
@@ -63,6 +67,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 
+bool sw_win_active = false;
+bool sw_tab_active = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
@@ -91,6 +97,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         return false;
   }
+
+  update_swapper(&sw_win_active, KC_LALT, KC_TAB, SW_WIN, OS_SHFT, keycode, record);
+  update_swapper(&sw_tab_active, KC_LCTL, KC_TAB, SW_TAB, OS_SHFT, keycode, record);
+
   return true;
 }
 
