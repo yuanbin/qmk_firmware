@@ -1,11 +1,10 @@
 #include "swapper.h"
 
-void update_swapper(
+int update_swapper(
     bool *active,
     uint16_t cmdish,
     uint16_t tabish,
     uint16_t trigger,
-    uint16_t reverse_key,
     uint16_t keycode,
     keyrecord_t *record
 ) {
@@ -20,12 +19,11 @@ void update_swapper(
             unregister_code(tabish);
             // Don't unregister cmdish until some other key is hit or released.
         }
-    } else if (*active
-        && keycode != reverse_key
-        && keycode != KC_LEFT
-        && keycode != KC_RIGHT
-    ) {
+    } else if (*active) {
         unregister_code(cmdish);
         *active = false;
+    } else {
+	return true; // no update; normal process
     }
+    return false;
 }

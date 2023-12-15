@@ -3,15 +3,14 @@
 #include "swapper.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #define TR KC_TRANSPARENT
-#define OS_SHFT MOD_LSFT
+#define MC_DELAY 20
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
-  ST_MACRO_0,
-  ST_MACRO_1,
-  ST_MACRO_2,
+  MACRO_LEADER,
+  MACRO_HOMEDIR,
+  MACRO_PARENDIR,
   SW_WIN,  // Switch to next window         (alt-tab)
-  SW_TAB,  // Switch to next browser tab    (ctrl-tab)
 };
 
 /*
@@ -30,7 +29,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_AUDIO_VOL_DOWN, //l2
       KC_HYPR,        KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS, //r2
       MT(MOD_LSFT, KC_ESCAPE), MT(MOD_LSFT, KC_A), MT(MOD_LALT, KC_S), MT(MOD_LCTL, KC_D), LT(1,KC_F), LT(2,KC_G), SW_WIN, //l3
-      ST_MACRO_0,     LT(2,KC_H),     LT(1,KC_J),     MT(MOD_RCTL, KC_K),MT(MOD_RALT, KC_L),MT(MOD_RSFT, KC_SCLN),KC_QUOTE, //r3
+      MACRO_LEADER,     LT(2,KC_H),     LT(1,KC_J),     MT(MOD_RCTL, KC_K),MT(MOD_RALT, KC_L),MT(MOD_RSFT, KC_SCLN),KC_QUOTE, //r3
       KC_LEFT_GUI,    KC_Z,           KC_X,           KC_C,           KC_V,           KC_B, //l4
       KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_LEFT, //r4
       KC_GRAVE,       KC_HOME,        MT(MOD_LSFT, KC_END),  KC_PAGE_UP,     KC_PGDN,        KC_HOME, // l5
@@ -45,8 +44,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TR,             KC_PIPE,        KC_COLN,        KC_LCBR,        KC_RCBR,        KC_CIRC,        KC_F12,
     DM_PLY1,        KC_EXLM,        KC_MINUS,       KC_PLUS,        KC_EQUAL,       KC_DQUO,        TR,
     TR,             KC_AMPR,        KC_UNDS,        KC_LPRN,        KC_RPRN,        KC_GRAVE,       TR,
-    DM_PLY2,        ST_MACRO_1,     KC_BSLS,        KC_ASTR,        KC_SLASH,       KC_QUES,
-    KC_TILD,        KC_DLR,         KC_LBRC,        KC_RBRC,        ST_MACRO_2,     TR,
+    DM_PLY2,        MACRO_HOMEDIR,     KC_BSLS,        KC_ASTR,        KC_SLASH,       KC_QUES,
+    KC_TILD,        KC_DLR,         KC_LBRC,        KC_RBRC,        MACRO_PARENDIR,     TR,
     DM_RSTP,        TR, TR, TR, TR, RGB_MODE_FORWARD,
     RGB_TOG,        TR, TR, TR, TR, TR,
     RGB_VAD,        RGB_VAI,        TOGGLE_LAYER_COLOR,
@@ -71,22 +70,24 @@ bool sw_win_active = false;
 bool sw_tab_active = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    case ST_MACRO_0:
-    if (record->event.pressed) {
-      SEND_STRING(SS_RALT(SS_TAP(X_R)));
-    }
-    break;
-    case ST_MACRO_1:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LSFT(SS_TAP(X_GRAVE)) SS_DELAY(100) SS_TAP(X_SLASH));
-    }
-    break;
-    case ST_MACRO_2:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_DOT) SS_DELAY(100) SS_TAP(X_DOT) SS_DELAY(100) SS_TAP(X_SLASH));
-    }
-    break;
+    if (!update_swapper(&sw_win_active, KC_LALT, KC_TAB, SW_WIN, keycode, record))
+        return false; // has update, stop process
+    switch (keycode) {
+    case MACRO_LEADER:
+        if (record->event.pressed) {
+            SEND_STRING(SS_RALT(SS_TAP(X_R)));
+        }
+        break;
+    case MACRO_HOMEDIR:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LSFT(SS_TAP(X_GRAVE)) SS_DELAY(MC_DELAY) SS_TAP(X_SLASH));
+        }
+        break;
+    case MACRO_PARENDIR:
+        if (record->event.pressed) {
+            SEND_STRING(SS_TAP(X_DOT) SS_DELAY(MC_DELAY) SS_TAP(X_DOT) SS_DELAY(MC_DELAY) SS_TAP(X_SLASH));
+        }
+        break;
 
     case RGB_SLD:
         if (rawhid_state.rgb_control) {
@@ -97,9 +98,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         return false;
   }
-
-  update_swapper(&sw_win_active, KC_LALT, KC_TAB, SW_WIN, OS_SHFT, keycode, record);
-  update_swapper(&sw_tab_active, KC_LCTL, KC_TAB, SW_TAB, OS_SHFT, keycode, record);
 
   return true;
 }
