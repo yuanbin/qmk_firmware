@@ -12,6 +12,8 @@ enum custom_keycodes {
     MACRO_LEADER,
     MACRO_HOMEDIR,
     MACRO_PARENDIR,
+    MACRO_ZOOMIN,
+    MACRO_ZOOMOUT,
     SW_WIN,  // Switch to next window         (alt-tab)
     NUMWORD
 };
@@ -61,17 +63,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         RGB_SLD,        RGB_HUD,        RGB_HUI
                                     ),
     [L_MEDIA] = LAYOUT_moonlander(
-        TR, TR, TR, TR, TR, KC_PSCR, KC_CAPS,
-        KC_DELETE, TR, TR, TR, TR, TR, TR,
-        TR, TR, TR, KC_MS_UP, TR, TR, TR,
-        TR, TR, KC_7, KC_8, KC_9, TR, TR,
-        TR, KC_WWW_BACK, KC_MS_LEFT, KC_MS_DOWN, KC_MS_RIGHT, KC_WWW_FORWARD, TR,
-        TR, TR, KC_4, KC_5, KC_6, TR, TR,
-        TR, TR, TR, TR, TR, TR,
-        TR, KC_1, KC_2, KC_3, TR, TR,
-        QK_BOOT, TR, TR, KC_MS_BTN2, KC_MS_BTN1, MOON_LED_LEVEL,
-        KC_SYSTEM_SLEEP, KC_0, KC_DOT, TR, TR, TR,
-        TR, TR, TR, TR, TR, TR
+        TR, TR, TR, TR, TR, KC_PSCR, KC_CAPS, //l1
+        KC_DELETE, TR, TR, TR, TR, TR, TR, //r1
+        TR, TR, MACRO_ZOOMIN, KC_MS_UP, MACRO_ZOOMOUT, TR, TR, //l2
+        TR, TR, KC_7, KC_8, KC_9, TR, TR, //r2
+        TR, KC_WWW_BACK, KC_MS_LEFT, KC_MS_DOWN, KC_MS_RIGHT, KC_WWW_FORWARD, TR, //l3
+        TR, TR, KC_4, KC_5, KC_6, TR, TR, //r3
+        TR, TR, TR, TR, TR, TR, //l4
+        TR, KC_1, KC_2, KC_3, TR, TR, //r4
+        QK_BOOT, TR, TR, KC_MS_BTN2, KC_MS_BTN1, MOON_LED_LEVEL, //l5
+        KC_SYSTEM_SLEEP, KC_0, KC_DOT, TR, TR, TR, //r5
+        TR, TR, TR, TR, TR, TR //thumb
                                   ),
     [L_NUMBERS] = LAYOUT_moonlander(
         TR, TR, TR, TR, TR, TR, TR, //l1
@@ -115,6 +117,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             SEND_STRING(SS_TAP(X_DOT) SS_DELAY(MC_DELAY) SS_TAP(X_DOT) SS_DELAY(MC_DELAY) SS_TAP(X_SLASH));
         }
         break;
+    case MACRO_ZOOMIN:
+        if (record->event.pressed) {
+            SEND_STRING(SS_RCTL(SS_RSFT(SS_TAP(X_EQUAL))));
+        }
+        break;
+    case MACRO_ZOOMOUT:
+        if (record->event.pressed) {
+            SEND_STRING(SS_RCTL(SS_TAP(X_MINUS)));
+        }
+        break;
 
     case RGB_SLD:
         if (rawhid_state.rgb_control) {
@@ -128,6 +140,3 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     return true;
 }
-
-
-
