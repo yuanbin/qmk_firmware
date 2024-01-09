@@ -59,8 +59,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	ST_MACRO_RAR_N, LT(4,KC_H),     LT(1,KC_J),     MT(MOD_RCTL, KC_K),MT(MOD_RALT, KC_L),MT(MOD_RSFT, KC_SCLN),MT(MOD_RGUI, KC_QUOTE),
 	_______, KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,
 	KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       _______,
-	_______, _______, MT(MOD_LSFT, KC_HOME),KC_PAGE_UP,     KC_PGDN,        _______,
-	_______, KC_UP,          KC_DOWN,        MT(MOD_RSFT, KC_END),_______, _______,
+	_______, _______, OSM(MOD_LSFT), KC_PAGE_UP,     KC_PGDN,        _______,
+	_______, KC_UP,          KC_DOWN,        OSM(MOD_RSFT), _______, _______,
 	KC_ENTER,       KC_BSPC,        _______,                 _______, KC_TAB,         KC_SPACE
 	),
     [L_SYMBOLS] = LAYOUT_moonlander(
