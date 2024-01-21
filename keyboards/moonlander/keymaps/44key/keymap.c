@@ -59,8 +59,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	ST_MACRO_RAR_N, LT(4,KC_H),     LT(1,KC_J),     MT(MOD_RCTL, KC_K),MT(MOD_RALT, KC_L),MT(MOD_RSFT, KC_SCLN),MT(MOD_RGUI, KC_QUOTE),
 	_______, KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,
 	KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       _______,
-	_______, _______, OSM(MOD_LSFT), KC_PAGE_UP,     KC_PGDN,        _______,
-	_______, KC_UP,          KC_DOWN,        OSM(MOD_RSFT), _______, _______,
+	_______, _______,       KC_PGUP, KC_PGDN, OSM(MOD_LSFT),  _______,
+	_______, OSM(MOD_RSFT), KC_DOWN,    KC_UP,   _______,        _______,
 	KC_ENTER,       KC_BSPC,        _______,                 _______, KC_TAB,         KC_SPACE
 	),
     [L_SYMBOLS] = LAYOUT_moonlander(
@@ -83,11 +83,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	_______, _______, KC_LEFT,        KC_HOME,        KC_RIGHT,       _______, _______,
 	_______, _______, KC_7,           KC_8,           KC_9,           KC_ASTR,        _______,
 	_______, _______, KC_WWW_BACK,    KC_END,         KC_WWW_FORWARD, CW_TOGG,        _______,
-	_______, NUMWORD, KC_4,           KC_5,           KC_6,           KC_PLUS,        KC_MINUS,
+	_______, NUMWORD, KC_4,           KC_5,           KC_6,           KC_DOT,        KC_MINUS,
 	_______, _______, _______, KC_WWW_HOME,    _______, _______,
 	_______, KC_1,           KC_2,           KC_3,           KC_SLASH,       _______,
-	QK_BOOT,        _______, KC_PSCR,        KC_DELETE,      MAC_SPOTLIGHT,  _______,
-	_______, KC_0,           KC_DOT,         KC_EQUAL,       _______, KC_CAPS,
+	QK_BOOT,        _______, KC_PSCR,        KC_DELETE,      KC_APP,  _______,
+	_______, KC_0,           KC_PLUS,         KC_EQUAL,       _______, KC_CAPS,
 	_______, _______, _______,                 _______, _______, ST_MACRO_RAR
 	),
     [L_FNMOUSE] = LAYOUT_moonlander(
@@ -106,15 +106,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [L_MACSYS] = LAYOUT_moonlander(
 	_______, _______, _______, _______, _______, _______, _______,
 	_______, _______, _______, _______, _______, _______, _______,
-	_______, _______, _______, DM_REC1,        DM_REC2,        DM_RSTP,        _______,
+        _______, _______, _______, _______, _______, _______, _______,
 	_______, _______, ST_MACRO_LANG,     ST_MACRO_ZOOMIN,     ST_MACRO_ZOOMOUT,     ST_MACRO_ZOOM_RESET,     _______,
-	_______, _______, _______, DM_PLY1,        DM_PLY2,        MOON_LED_LEVEL, _______,
+	_______, _______, _______, DM_PLY1,        DM_PLY2,        MOON_LED_LEVEL, DM_RSTP,
 	_______, _______, ST_MACRO_QR,     ST_MACRO_UNDO,     ST_MACRO_GOTO,     ST_MACRO_SAVE_FILE,    _______,
 	_______, _______, _______, _______, _______, _______,
 	_______, ST_MACRO_JOIN_LINE,    ST_MACRO_KILL_BUF,    ST_MACRO_MARK_BUF,    ST_MACRO_OPEN_FILE,    _______,
-	_______, _______, KC_PWR,         MAC_LOCK,       KC_SYSTEM_SLEEP,_______,
+	_______, _______, KC_SYSTEM_SLEEP, KC_PWR, MAC_LOCK, _______,
 	_______, _______, _______, _______, _______, _______,
-	_______, _______, _______,                 _______, _______, _______
+	DM_REC1, DM_REC2, _______,                 _______, _______, _______
 	),
     [L_MEDIA] = LAYOUT_moonlander(
 	_______, _______, _______, _______, _______, _______, _______,
@@ -135,11 +135,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	_______, _______, _______, _______, _______, _______, _______,
 	_______, _______, KC_7,    KC_8,    KC_9,    KC_ASTR, _______,
 	_______, _______, _______, _______, _______, _______, _______,
-	_______, _______, KC_4,    KC_5,    KC_6,    KC_PLUS, KC_MINUS,
+	_______, _______, KC_4,    KC_5,    KC_6,    KC_DOT, KC_MINUS,
 	_______, _______, _______, _______, _______, _______,
 	_______, KC_1,    KC_2,    KC_3,    KC_SLASH,_______,
 	_______, _______, _______, _______, _______, _______,
-	_______, KC_0,    KC_DOT,  KC_EQUAL,_______, _______,
+	_______, KC_0,    KC_PLUS,  KC_EQUAL,_______, _______,
 	_______, _______, _______, _______, _______, _______
 	),
 };
