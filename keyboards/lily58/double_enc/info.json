@@ -1,17 +1,15 @@
 {
-    "keyboard_name": "Lily58GlowEnc",
-    "manufacturer": "ORVISEVANS+",
-    "url": "https://keycapsss.com",
-    "maintainer": "BenRoe",
+    "keyboard_name": "Lily58DoubleEnc",
+    "manufacturer": "XianyuGuojing",
+    "url": "guojing.io",
+    "maintainer": "Guojing",
     "usb": {
-        "vid": "0xFC51",
-        "pid": "0x0059",
+        "vid": "0x8D1D",
+        "pid": "0xB4C2",
         "device_version": "1.0.0"
     },
     "features": {
         "encoder": true,
-        "oled": true,
-        "rgblight": true
     },
     "matrix_pins": {
         "cols": ["F6", "F7", "B1", "B3", "B2", "B6"],
@@ -38,9 +36,7 @@
         "pin": "F4"
     },
     "rgblight": {
-        "led_count": 72,
-        "max_brightness": 120,
-        "split_count": [36, 36]
+        "led_count": 0,
     },
     "processor": "atmega32u4",
     "bootloader": "caterina",
