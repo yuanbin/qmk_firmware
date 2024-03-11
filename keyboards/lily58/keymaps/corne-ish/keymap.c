@@ -6,7 +6,7 @@
 #define MACRO_DELAY 20
 
 enum custom_keycodes {
-    SW_WIN,  // Switch to next window         (alt-tab)
+    SW_WIN = SAFE_RANGE,  // Switch to next window         (alt-tab)
     NUMWORD,
     ST_MACRO_HOME_DIR,
     ST_MACRO_PAREN_DIR,
@@ -77,11 +77,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	KC_ESCAPE,          KC_Q,         LT(3,KC_W),     LT(2,KC_E),   LT(5,KC_R),   KC_T,
 	MT(MOD_RGUI,KC_Y),  LT(5,KC_U),   LT(2,KC_I),     LT(3,KC_O),   KC_P,         _______,
 	SW_WIN,     MT(MOD_LSFT, KC_A), MT(MOD_LALT, KC_S), MT(MOD_LCTL, KC_D), LT(1,KC_F),            LT(4,KC_G),
-        LT(4,KC_H), LT(1,KC_J),         MT(MOD_RCTL, KC_K), MT(MOD_RALT, KC_L), MT(MOD_RSFT, KC_SCLN), _______,
-	NUMWORD, KC_Z,  KC_X, KC_C,     KC_V,   KC_B, _______,
-	_______, KC_N,  KC_M, KC_COMMA, KC_DOT, KC_SLASH, CW_TOGG,
-	_______, OSM(MOD_LSFT), KC_ENTER,      KC_BSPC,
-	KC_TAB,  KC_SPACE,      OSM(MOD_RSFT), _______
+        LT(4,KC_H), LT(1,KC_J),         MT(MOD_RCTL, KC_K), MT(MOD_RALT, KC_L), MT(MOD_RSFT, KC_SCLN), ST_MACRO_RAR_N,
+	NUMWORD, KC_Z,  KC_X, KC_C,     KC_V,   KC_B, KC_HOME,
+	KC_MUTE, KC_N,  KC_M, KC_COMMA, KC_DOT, KC_SLASH, CW_TOGG,
+	KC_UP, OSM(MOD_LSFT), KC_ENTER,      KC_BSPC,
+	KC_TAB,  KC_SPACE,      OSM(MOD_RSFT), KC_DOWN
 	),
     [L_SYMBOLS] = LAYOUT(
 	_______, _______, _______, _______, _______, _______,
@@ -256,4 +256,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	break;
     }
     return true;
+}
+
+bool encoder_update_user(uint8_t index, bool clockwise) {
+    if (index == 0) { /* First encoder */
+        if (clockwise) {
+            tap_code(KC_WH_U);
+        } else {
+            tap_code(KC_WH_D);
+        }
+    } else if (index == 1) { /* Second encoder */
+        if (clockwise) {
+	    tap_code(KC_VOLU);
+        } else {
+	    tap_code(KC_VOLD);
+        }
+    }
+    return false;
 }
