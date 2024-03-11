@@ -105,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	QK_BOOT, _______, KC_PGUP, KC_WWW_HOME,    KC_PGDN, _______, _______,
 	_______, _______, KC_1,           KC_2,           KC_3,           KC_SLASH,       _______,
 	KC_PSCR, KC_DELETE, KC_APP,  _______,
-	_______, KC_0,      KC_PLUS, KC_EQUAL
+	KC_EQUAL, ST_MACRO_RAR, KC_0, KC_PLUS
 	),
     [L_FNMOUSE] = LAYOUT(
 	_______, _______, _______, _______, _______, _______,
