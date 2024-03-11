@@ -1,2 +1,3 @@
 LTO_ENABLE = yes
-CONVERT_TO = rp2040_ce
+CONVERT_TO = promicro_rp2040
+
