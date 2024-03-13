@@ -98,11 +98,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       [L_NUMNAV] = LAYOUT(
 	_______, _______, _______, _______, _______, _______,
 	_______, _______, _______, _______, _______, _______,
-	_______, _______, KC_HOME,        KC_UP,        KC_END,       _______,
+	_______, KC_WWW_FORWARD, KC_PGUP,        KC_UP,        KC_PGDN,       ST_MACRO_ZOOMOUT,
 	_______, KC_7,           KC_8,           KC_9,           KC_ASTR, _______,
-	_______, KC_WWW_BACK, KC_LEFT,    KC_DOWN,         KC_RIGHT, KC_WWW_FORWARD,
-	_______, KC_4,           KC_5,           KC_6,           KC_DOT,        KC_MINUS,
-	QK_BOOT, _______, KC_PGUP, KC_WWW_HOME,    KC_PGDN, _______, _______,
+	_______, KC_WWW_BACK, KC_LEFT,    KC_DOWN,         KC_RIGHT, ST_MACRO_ZOOMIN,
+	_______, KC_4,           KC_5,           KC_6,          KC_DOT,        KC_MINUS,
+	QK_BOOT, KC_WWW_HOME, KC_HOME, _______,    KC_END, ST_MACRO_ZOOM_RESET, _______,
 	_______, _______, KC_1,           KC_2,           KC_3,           KC_SLASH,       _______,
 	KC_PSCR, KC_DELETE, KC_APP,  _______,
 	KC_EQUAL, ST_MACRO_RAR, KC_0, KC_PLUS
@@ -110,26 +110,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [L_FNMOUSE] = LAYOUT(
 	_______, _______, _______, _______, _______, _______,
 	_______, _______, _______, _______, _______, _______,
-	_______, _______, KC_MS_WH_LEFT,  KC_MS_UP,       KC_MS_WH_RIGHT, _______,
+	_______, _______, KC_MS_WH_UP,  KC_MS_UP,       KC_MS_WH_DOWN, _______,
 	_______, KC_F7,          KC_F8,          KC_F9,          _______, _______,
-	_______, KC_MS_WH_UP,    KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    KC_MS_WH_DOWN,
+	_______, KC_MS_WH_LEFT,    KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    KC_MS_WH_RIGHT,
 	_______, KC_F4,          KC_F5,          KC_F6,          _______, _______,
 	_______, _______, _______, _______, _______, _______, _______,
 	_______,_______, KC_F1,          KC_F2,          KC_F3,          _______, _______,
-	_______, KC_MS_BTN3,     KC_MS_BTN2,     KC_MS_BTN1,
+	_______, KC_MS_BTN3,     KC_MS_BTN1,     KC_MS_BTN2,
 	_______, KC_F10,         KC_F11,         KC_F12
 	),
       [L_MACSYS] = LAYOUT(
 	_______, _______, _______, _______, _______, _______,
 	_______, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______,
-	_______, ST_MACRO_LANG, ST_MACRO_ZOOMIN,     ST_MACRO_ZOOMOUT,     ST_MACRO_ZOOM_RESET,     _______,
-	_______, _______, _______, DM_PLY1,        DM_PLY2,        _______,
+        _______, _______, _______, DM_PLY1, DM_PLY2, _______,
+	_______, ST_MACRO_LANG, _______, _______, _______,  _______,
+	_______, _______, _______, _______, _______, _______,
 	_______, ST_MACRO_QR,     ST_MACRO_UNDO,     ST_MACRO_GOTO,     ST_MACRO_SAVE_FILE,    _______,
 	_______, _______, _______, _______, _______, _______, _______,
 	_______, _______, ST_MACRO_JOIN_LINE,    ST_MACRO_KILL_BUF,    ST_MACRO_MARK_BUF,    ST_MACRO_OPEN_FILE,    _______,
-	KC_SYSTEM_SLEEP, _______, DM_REC1, DM_REC2,
-	KC_PWR, DM_RSTP, _______, _______
+	KC_SYSTEM_SLEEP, KC_PWR, DM_REC1, DM_REC2,
+	_______, DM_RSTP, _______, _______
 	),
       [L_MEDIA] = LAYOUT(
 	_______, _______, _______, _______, _______, _______,
@@ -153,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	_______, _______, _______, _______, _______, _______,  _______,
 	_______, _______, KC_1,    KC_2,    KC_3,    KC_SLASH,_______,
 	_______, _______, _______, _______,
-	_______, KC_0,    KC_PLUS,  KC_EQUAL
+	KC_EQUAL, _______, KC_0,    KC_PLUS
 	),
 };
 
