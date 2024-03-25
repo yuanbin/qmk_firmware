@@ -53,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [L_BASE] = LAYOUT_moonlander(
 	_______, _______, _______, _______, _______, _______, _______,
 	_______, _______, _______, _______, _______, _______, _______,
-	KC_ESCAPE, KC_Q,     LT(3,KC_W),     LT(2,KC_E),     LT(5,KC_R), KC_T,  _______,
+	KC_ESCAPE, KC_Q,     LT(3,KC_W),     LT(2,KC_E),     LT(5,KC_R), MT(MOD_LGUI,KC_T),  _______,
 	_______, MT(MOD_RGUI,KC_Y),     LT(5,KC_U),     LT(2,KC_I),     LT(3,KC_O), KC_P,  _______,
 	SW_WIN,MT(MOD_LSFT, KC_A),MT(MOD_LALT, KC_S),MT(MOD_LCTL, KC_D),LT(1,KC_F),     LT(4,KC_G),     _______,
 	_______, LT(4,KC_H),     LT(1,KC_J),     MT(MOD_RCTL, KC_K),MT(MOD_RALT, KC_L),MT(MOD_RSFT, KC_SCLN),ST_MACRO_RAR_N,
