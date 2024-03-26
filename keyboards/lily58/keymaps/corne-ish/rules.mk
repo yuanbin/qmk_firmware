@@ -12,6 +12,7 @@ SWAP_HANDS_ENABLE = no      # Enable one-hand typing
 OLED_ENABLE = no           # OLED display
 DYNAMIC_MACRO_ENABLE = yes
 CAPS_WORD_ENABLE = yes
+ENCODER_MAP_ENABLE = yes
 
 SRC += features/swapper.c
 SRC += features/num_word.c

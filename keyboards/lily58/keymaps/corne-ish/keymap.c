@@ -36,6 +36,16 @@ enum layers {
     L_NUMBERS,
 };
 
+const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
+    [L_BASE] = { ENCODER_CCW_CW(   KC_PGDN,    KC_PGUP), ENCODER_CCW_CW(   KC_VOLU,    KC_VOLD) },
+    [L_SYMBOLS] = { ENCODER_CCW_CW(   KC_NO,    KC_NO), ENCODER_CCW_CW(   KC_NO,    KC_NO) },
+    [L_NUMNAV] = { ENCODER_CCW_CW(   KC_NO,    KC_NO), ENCODER_CCW_CW(   KC_NO,    KC_NO) },
+    [L_FNMOUSE] = { ENCODER_CCW_CW(   KC_NO,    KC_NO), ENCODER_CCW_CW(   KC_NO,    KC_NO) },
+    [L_MACSYS] = { ENCODER_CCW_CW(   KC_NO,    KC_NO), ENCODER_CCW_CW(   KC_NO,    KC_NO) },
+    [L_MEDIA] = { ENCODER_CCW_CW(   KC_NO,    KC_NO), ENCODER_CCW_CW(   KC_NO,    KC_NO) },
+    [L_NUMBERS] = { ENCODER_CCW_CW(   KC_NO,    KC_NO), ENCODER_CCW_CW(   KC_NO,    KC_NO) }
+};
+
 /*
   keys on each side: 6 6 6 7 4
   l1 r1
@@ -74,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [L_BASE] = LAYOUT(
 	_______, _______, _______, _______, _______, _______,
 	_______, _______, _______, _______, _______, _______,
-	KC_ESCAPE,          KC_Q,         LT(3,KC_W),     LT(2,KC_E),   LT(5,KC_R),   KC_T,
+	KC_ESCAPE,          KC_Q,         LT(3,KC_W),     LT(2,KC_E),   LT(5,KC_R),   MT(MOD_LGUI,KC_T),
 	MT(MOD_RGUI,KC_Y),  LT(5,KC_U),   LT(2,KC_I),     LT(3,KC_O),   KC_P,         _______,
 	SW_WIN,     MT(MOD_LSFT, KC_A), MT(MOD_LALT, KC_S), MT(MOD_LCTL, KC_D), LT(1,KC_F),            LT(4,KC_G),
         LT(4,KC_H), LT(1,KC_J),         MT(MOD_RCTL, KC_K), MT(MOD_RALT, KC_L), MT(MOD_RSFT, KC_SCLN), ST_MACRO_RAR_N,
@@ -256,21 +266,4 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	break;
     }
     return true;
-}
-
-bool encoder_update_user(uint8_t index, bool clockwise) {
-    if (index == 0) { /* First encoder */
-        if (clockwise) {
-            tap_code(KC_WH_U);
-        } else {
-            tap_code(KC_WH_D);
-        }
-    } else if (index == 1) { /* Second encoder */
-        if (clockwise) {
-	    tap_code(KC_VOLU);
-        } else {
-	    tap_code(KC_VOLD);
-        }
-    }
-    return false;
 }
