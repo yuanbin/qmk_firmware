@@ -37,7 +37,7 @@ enum layers {
 };
 
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
-    [L_BASE] = { ENCODER_CCW_CW(   KC_PGDN,    KC_PGUP), ENCODER_CCW_CW(   KC_VOLU,    KC_VOLD) },
+    [L_BASE] = { ENCODER_CCW_CW(   KC_PGUP,    KC_PGDN), ENCODER_CCW_CW(   KC_VOLD,    KC_VOLU) },
     [L_SYMBOLS] = { ENCODER_CCW_CW(   KC_NO,    KC_NO), ENCODER_CCW_CW(   KC_NO,    KC_NO) },
     [L_NUMNAV] = { ENCODER_CCW_CW(   KC_NO,    KC_NO), ENCODER_CCW_CW(   KC_NO,    KC_NO) },
     [L_FNMOUSE] = { ENCODER_CCW_CW(   KC_NO,    KC_NO), ENCODER_CCW_CW(   KC_NO,    KC_NO) },
@@ -90,16 +90,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         LT(4,KC_H), LT(1,KC_J),         MT(MOD_RCTL, KC_K), MT(MOD_RALT, KC_L), MT(MOD_RSFT, KC_SCLN), ST_MACRO_RAR_N,
 	NUMWORD, KC_Z,  KC_X, KC_C,     KC_V,   KC_B, KC_HOME,
 	KC_MUTE, KC_N,  KC_M, KC_COMMA, KC_DOT, KC_SLASH, CW_TOGG,
-	KC_UP, OSM(MOD_LSFT), KC_ENTER,      KC_BSPC,
-	KC_TAB,  KC_SPACE,      OSM(MOD_RSFT), KC_DOWN
+	KC_MS_BTN1, OSM(MOD_LSFT), KC_ENTER,      KC_BSPC,
+	KC_TAB,  KC_SPACE,      OSM(MOD_RSFT), KC_MS_BTN1
 	),
     [L_SYMBOLS] = LAYOUT(
 	_______, _______, _______, _______, _______, _______,
 	_______, _______, _______, _______, _______, _______,
 	_______, KC_AT,          KC_LABK,        KC_RABK,        KC_HASH,        KC_PERC,
-	KC_PIPE,        KC_COLN,        KC_LCBR,        KC_RCBR,        KC_CIRC, _______,
+	KC_PIPE,        KC_COLN,        KC_LCBR,        KC_RCBR,        KC_GRAVE, _______,
 	_______, KC_EXLM,        KC_MINUS,       KC_PLUS,        KC_EQUAL,       KC_DQUO,
-	KC_AMPR,        KC_UNDS,        KC_LPRN,        KC_RPRN,        KC_GRAVE, _______,
+	KC_AMPR,        KC_UNDS,        KC_LPRN,        KC_RPRN,        KC_CIRC, _______,
 	_______, ST_MACRO_HOME_DIR,     KC_BSLS,        KC_ASTR,        KC_QUOTE,       KC_QUES, _______,
 	_______, KC_TILD,        KC_DLR,         KC_LBRC,        KC_RBRC,        ST_MACRO_PAREN_DIR,     _______,
 	_______, _______, _______, _______,
@@ -108,26 +108,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       [L_NUMNAV] = LAYOUT(
 	_______, _______, _______, _______, _______, _______,
 	_______, _______, _______, _______, _______, _______,
-	_______, KC_WWW_FORWARD, KC_PGUP,        KC_UP,        KC_PGDN,       ST_MACRO_ZOOMOUT,
+	_______, KC_WWW_FORWARD, KC_HOME,        KC_UP,        KC_END,       ST_MACRO_ZOOMOUT,
 	_______, KC_7,           KC_8,           KC_9,           KC_ASTR, _______,
 	_______, KC_WWW_BACK, KC_LEFT,    KC_DOWN,         KC_RIGHT, ST_MACRO_ZOOMIN,
 	_______, KC_4,           KC_5,           KC_6,          KC_DOT,        KC_MINUS,
-	QK_BOOT, KC_WWW_HOME, KC_HOME, _______,    KC_END, ST_MACRO_ZOOM_RESET, _______,
+	QK_BOOT, KC_WWW_HOME, KC_PGUP, _______,    KC_PGDN, ST_MACRO_ZOOM_RESET, _______,
 	_______, _______, KC_1,           KC_2,           KC_3,           KC_SLASH,       _______,
-	KC_PSCR, KC_DELETE, KC_APP,  _______,
+	KC_PSCR, KC_DELETE, KC_DOT,  _______,
 	KC_EQUAL, ST_MACRO_RAR, KC_0, KC_PLUS
 	),
     [L_FNMOUSE] = LAYOUT(
 	_______, _______, _______, _______, _______, _______,
 	_______, _______, _______, _______, _______, _______,
 	_______, _______, KC_MS_WH_UP,  KC_MS_UP,       KC_MS_WH_DOWN, _______,
-	_______, KC_F7,          KC_F8,          KC_F9,          _______, _______,
+	KC_F12, KC_F7,          KC_F8,          KC_F9, KC_F15, _______,
 	_______, KC_MS_WH_LEFT,    KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    KC_MS_WH_RIGHT,
-	_______, KC_F4,          KC_F5,          KC_F6,          _______, _______,
+	KC_F11, KC_F4,          KC_F5,          KC_F6, KC_F14, _______,
 	_______, _______, _______, _______, _______, _______, _______,
-	_______,_______, KC_F1,          KC_F2,          KC_F3,          _______, _______,
+	_______,KC_F10, KC_F1,          KC_F2,          KC_F3, KC_F13, _______,
 	_______, KC_MS_BTN3,     KC_MS_BTN1,     KC_MS_BTN2,
-	_______, KC_F10,         KC_F11,         KC_F12
+	_______, _______, _______, _______
 	),
       [L_MACSYS] = LAYOUT(
 	_______, _______, _______, _______, _______, _______,
@@ -162,7 +162,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	_______, KC_4,    KC_5,    KC_6,    KC_DOT, KC_MINUS,
 	_______, _______, _______, _______, _______, _______,  _______,
 	_______, _______, KC_1,    KC_2,    KC_3,    KC_SLASH,_______,
-	_______, _______, _______, _______,
+	_______, _______,  KC_DOT, _______,
 	KC_EQUAL, _______, KC_0,    KC_PLUS
 	),
 };
