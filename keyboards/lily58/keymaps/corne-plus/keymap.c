@@ -34,6 +34,7 @@ enum layers {
     L_MACSYS,
     L_MEDIA,
     L_NUMBERS,
+    L_ONEHAND
 };
 
 #if defined(ENCODER_MAP_ENABLE)
@@ -44,7 +45,8 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
     [L_FNMOUSE] = { ENCODER_CCW_CW(   KC_NO,    KC_NO), ENCODER_CCW_CW(   KC_NO,    KC_NO) },
     [L_MACSYS] = { ENCODER_CCW_CW(   KC_NO,    KC_NO), ENCODER_CCW_CW(   KC_NO,    KC_NO) },
     [L_MEDIA] = { ENCODER_CCW_CW(   KC_NO,    KC_NO), ENCODER_CCW_CW(   KC_NO,    KC_NO) },
-    [L_NUMBERS] = { ENCODER_CCW_CW(   KC_NO,    KC_NO), ENCODER_CCW_CW(   KC_NO,    KC_NO) }
+    [L_NUMBERS] = { ENCODER_CCW_CW(   KC_NO,    KC_NO), ENCODER_CCW_CW(   KC_NO,    KC_NO) },
+    [L_ONEHAND] = { ENCODER_CCW_CW(   KC_NO,    KC_NO), ENCODER_CCW_CW(   KC_NO,    KC_NO) }
 };
 #endif
 
@@ -90,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	MT(MOD_RGUI,KC_Y),  LT(5,KC_U),   LT(2,KC_I),     LT(3,KC_O),   KC_P,         _______,
 	SW_WIN,     MT(MOD_LSFT, KC_A), MT(MOD_LALT, KC_S), MT(MOD_LCTL, KC_D), LT(1,KC_F),            LT(4,KC_G),
         LT(4,KC_H), LT(1,KC_J),         MT(MOD_RCTL, KC_K), MT(MOD_RALT, KC_L), MT(MOD_RSFT, KC_SCLN), ST_MACRO_RAR_N,
-	NUMWORD, KC_Z,  KC_X, KC_C,     KC_V,   KC_B, KC_HOME,
+	NUMWORD, KC_Z,  KC_X, KC_C,     KC_V,   KC_B, TG(L_ONEHAND),
 	KC_MUTE, KC_N,  KC_M, KC_COMMA, KC_DOT, KC_SLASH, CW_TOGG,
 	KC_MS_BTN1, OSM(MOD_LSFT), KC_ENTER,      KC_BSPC,
 	KC_TAB,  KC_SPACE,      OSM(MOD_RSFT), KC_MS_BTN1
@@ -115,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	_______, KC_WWW_BACK, KC_LEFT,    KC_DOWN,         KC_RIGHT, ST_MACRO_ZOOMIN,
 	_______, KC_4,           KC_5,           KC_6,          KC_DOT,        KC_MINUS,
 	QK_BOOT, KC_WWW_HOME, KC_PGUP, _______,    KC_PGDN, ST_MACRO_ZOOM_RESET, _______,
-	_______, _______, KC_1,           KC_2,           KC_3,           KC_SLASH,       _______,
+	_______, _______, KC_1,           KC_2,           KC_3,           KC_SLASH,       QK_BOOT,
 	KC_PSCR, KC_DELETE, KC_DOT,  _______,
 	KC_EQUAL, ST_MACRO_RAR, KC_0, KC_PLUS
 	),
@@ -166,6 +168,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	_______, _______, KC_1,    KC_2,    KC_3,    KC_SLASH,_______,
 	_______, _______, KC_DOT, _______,
 	KC_EQUAL, _______, KC_0,    KC_PLUS
+	),
+    [L_ONEHAND] = LAYOUT(
+	_______, _______, _______, _______, _______, _______,
+	_______, _______, _______, _______, _______, _______,
+	_______, KC_WWW_FORWARD, KC_HOME, KC_WH_U, KC_END, ST_MACRO_ZOOMOUT,
+        _______, _______, _______, _______, _______, _______,
+	_______, KC_WWW_BACK, KC_BTN3, KC_BTN1, KC_BTN2, ST_MACRO_ZOOMIN,
+        _______, _______, _______, _______, _______, _______,
+	_______, KC_WWW_HOME, KC_PGUP, KC_WH_D,    KC_PGDN, ST_MACRO_ZOOM_RESET, _______,
+        _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______,
+        _______, _______, _______, _______
 	),
 };
 
