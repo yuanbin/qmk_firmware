@@ -38,6 +38,7 @@ enum layers {
     L_MACSYS,
     L_MEDIA,
     L_NUMBERS,
+    L_ONEHAND
 };
 
 /*
@@ -59,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	_______, LT(4,KC_H),     LT(1,KC_J),     MT(MOD_RCTL, KC_K),MT(MOD_RALT, KC_L),MT(MOD_RSFT, KC_SCLN),ST_MACRO_RAR_N,
 	NUMWORD, KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,
 	KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       CW_TOGG,
-	_______, _______,       KC_PGUP, KC_PGDN, OSM(MOD_LSFT),  _______,
+	_______, _______,       KC_PGUP, KC_PGDN, OSM(MOD_LSFT),  TG(L_ONEHAND),
 	_______, OSM(MOD_RSFT), KC_DOWN,    KC_UP,   _______,        _______,
 	KC_ENTER,       KC_BSPC,        _______,                 _______, KC_TAB,         KC_SPACE
 	),
@@ -67,10 +68,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	_______, _______, _______, _______, _______, _______, _______,
 	_______, _______, _______, _______, _______, _______, _______,
 	_______, KC_AT,          KC_LABK,        KC_RABK,        KC_HASH,        KC_PERC,        _______,
-	_______, KC_PIPE,        KC_COLN,        KC_LCBR,        KC_RCBR,        KC_CIRC,        _______,
+	_______, KC_PIPE,        KC_COLN,        KC_LCBR,        KC_RCBR,        KC_GRAVE,        _______,
 	_______, KC_EXLM,        KC_MINUS,       KC_PLUS,        KC_EQUAL,       KC_DQUO,        _______,
-
-	_______, KC_AMPR,        KC_UNDS,        KC_LPRN,        KC_RPRN,        KC_GRAVE,       _______,
+	_______, KC_AMPR,        KC_UNDS,        KC_LPRN,        KC_RPRN,        KC_CIRC,       _______,
 	_______, ST_MACRO_HOME_DIR,     KC_BSLS,        KC_ASTR,        KC_QUOTE,       KC_QUES,
 	KC_TILD,        KC_DLR,         KC_LBRC,        KC_RBRC,        ST_MACRO_PAREN_DIR,     _______,
 	_______, _______, _______, _______, _______, _______,
@@ -134,13 +134,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	_______, _______, _______, _______, _______, _______, _______,
 	_______, _______, _______, _______, _______, _______, _______,
 	_______, _______, KC_7,    KC_8,    KC_9,    KC_ASTR, _______,
-	_______, _______, _______, _______, _______, _______, _______,
+	_______, _______, _______, KC_DOT, _______, _______, _______,
 	_______, _______, KC_4,    KC_5,    KC_6,    KC_DOT, KC_MINUS,
 	_______, _______, _______, _______, _______, _______,
 	_______, KC_1,    KC_2,    KC_3,    KC_SLASH,_______,
 	_______, _______, _______, _______, _______, _______,
 	_______, KC_0,    KC_PLUS,  KC_EQUAL,_______, _______,
-	KC_DOT, _______, _______, _______, _______, _______
+	_______, _______, _______, _______, _______, _______
+	),
+        [L_ONEHAND] = LAYOUT(
+	_______, _______, _______, _______, _______, _______, _______,
+	_______, _______, _______, _______, _______, _______, _______,
+	_______, KC_WWW_FORWARD, KC_HOME, KC_WH_U, KC_END, ST_MACRO_ZOOMOUT, _______,
+	_______, _______, _______, _______, _______, _______, _______,
+	_______, KC_WWW_BACK, KC_BTN3, KC_BTN1, KC_BTN2, ST_MACRO_ZOOMIN, _______,
+	_______, _______, _______, _______, _______, _______, _______,
+	_______, KC_WWW_HOME, KC_PGUP, KC_WH_D, KC_PGDN, ST_MACRO_ZOOM_RESET,
+	_______, _______, _______, _______, _______, _______,
+	_______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,
+	_______, _______, _______, _______, _______, _______
 	),
 };
 
