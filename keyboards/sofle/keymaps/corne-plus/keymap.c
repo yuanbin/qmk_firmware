@@ -70,7 +70,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
 /*
   keys on each side: 6 6 6 7 5
   l1 r1
-  l2 r2j
+  l2 r2
   l3 r3
   l4 r4
   lt rt
