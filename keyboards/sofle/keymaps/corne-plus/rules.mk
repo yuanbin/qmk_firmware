@@ -14,9 +14,10 @@ DYNAMIC_MACRO_ENABLE = yes
 #VIA_ENABLE = yes
 #RGB_MATRIX_ENABLE = yes
 ENCODER_MAP_ENABLE = yes
+CAPS_WORD_ENABLE = yes
 
 #BOOTLOADER = caterina
-BOOTLOADER = atmel-dfu
+#BOOTLOADER = atmel-dfu
 
 SRC += features/swapper.c
 SRC += features/num_word.c

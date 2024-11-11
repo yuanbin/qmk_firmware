@@ -41,6 +41,7 @@ enum custom_keycodes {
     ST_MACRO_KILL_BUF,
     ST_MACRO_MARK_BUF,
     ST_MACRO_OPEN_FILE,
+    ST_MACRO_SWITCH_BUF,
 };
 
 enum layers {
@@ -84,17 +85,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 */
 
-    [L_BASE] = LAYOUT(
+    [L_BASE] = LAYOUT_split_3x6_4(
 	KC_ESCAPE,          KC_Q,         LT(3,KC_W),     LT(2,KC_E),   LT(5,KC_R),   MT(MOD_LGUI,KC_T),
 	MT(MOD_RGUI,KC_Y),  LT(5,KC_U),   LT(2,KC_I),     LT(3,KC_O),   KC_P,         _______,
 	SW_WIN,     MT(MOD_LSFT, KC_A), MT(MOD_LALT, KC_S), MT(MOD_LCTL, KC_D), LT(1,KC_F),            LT(4,KC_G),
         LT(4,KC_H), LT(1,KC_J),         MT(MOD_RCTL, KC_K), MT(MOD_RALT, KC_L), MT(MOD_RSFT, KC_SCLN), ST_MACRO_RAR_N,
-	NUMWORD, KC_Z,  KC_X, KC_C,     KC_V,   KC_B,
-	KC_N,  KC_M, KC_COMMA, KC_DOT, KC_SLASH, CW_TOGG,
+	NUMWORD, KC_Z,  KC_X, MT(MOD_MEH,KC_C),     KC_V,   KC_B,
+	KC_N,  KC_M, MT(MOD_MEH,KC_COMMA), KC_DOT, KC_SLASH, CW_TOGG,
         KC_MS_BTN1, OSM(MOD_LSFT), KC_ENTER,      KC_BSPC,
 	KC_TAB,  KC_SPACE,      OSM(MOD_RSFT), KC_MS_BTN1
 	),
-    [L_SYMBOLS] = LAYOUT(
+    [L_SYMBOLS] = LAYOUT_split_3x6_4(
 	_______, KC_AT,          KC_LABK,        KC_RABK,        KC_HASH,        KC_PERC,
 	KC_PIPE,        KC_COLN,        KC_LCBR,        KC_RCBR,        KC_GRAVE, _______,
 	_______, KC_EXLM,        KC_MINUS,       KC_PLUS,        KC_EQUAL,       KC_DQUO,
@@ -104,17 +105,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	_______, _______, _______, _______,
 	_______, _______, _______, _______
 	),
-      [L_NUMNAV] = LAYOUT(
+      [L_NUMNAV] = LAYOUT_split_3x6_4(
 	_______, KC_WWW_FORWARD, KC_HOME,        KC_UP,        KC_END,       ST_MACRO_ZOOMOUT,
 	_______, KC_7,           KC_8,           KC_9,           KC_ASTR, _______,
 	_______, KC_WWW_BACK, KC_LEFT,    KC_DOWN,         KC_RIGHT, ST_MACRO_ZOOMIN,
 	_______, KC_4,           KC_5,           KC_6,          KC_DOT,        KC_MINUS,
 	QK_BOOT, KC_WWW_HOME, KC_PGUP, _______,    KC_PGDN, ST_MACRO_ZOOM_RESET,
 	_______, KC_1,           KC_2,           KC_3,           KC_SLASH,       QK_BOOT,
-	KC_PSCR, KC_DELETE, KC_DOT,  _______,
+	KC_PSCR, KC_DELETE, _______,  _______,
 	KC_EQUAL, ST_MACRO_RAR, KC_0, KC_PLUS
 	),
-    [L_FNMOUSE] = LAYOUT(
+    [L_FNMOUSE] = LAYOUT_split_3x6_4(
 	_______, _______, KC_MS_WH_UP,  KC_MS_UP,       KC_MS_WH_DOWN, _______,
 	KC_F12, KC_F7,          KC_F8,          KC_F9, KC_F15, _______,
 	_______, KC_MS_WH_LEFT,    KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    KC_MS_WH_RIGHT,
@@ -124,17 +125,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	_______, KC_MS_BTN3,     KC_MS_BTN1,     KC_MS_BTN2,
 	_______, _______, _______, _______
 	),
-      [L_MACSYS] = LAYOUT(
+      [L_MACSYS] = LAYOUT_split_3x6_4(
         _______, _______, _______, DM_PLY1, DM_PLY2, _______,
-	_______, ST_MACRO_LANG, _______, _______, _______,  _______,
+	_______, RALT(KC_S), ST_MACRO_UNDO,  LCTL(LALT(KC_J)), ST_MACRO_LANG,  _______,
 	_______, _______, _______, _______, _______, _______,
-	_______, ST_MACRO_QR,     ST_MACRO_UNDO,     ST_MACRO_GOTO,     ST_MACRO_SAVE_FILE,    _______,
+	_______, ST_MACRO_GOTO,     ST_MACRO_SWITCH_BUF,     ST_MACRO_OPEN_FILE,     ST_MACRO_SAVE_FILE,    _______,
 	_______, _______, _______, _______, _______, _______,
-	_______, ST_MACRO_JOIN_LINE,    ST_MACRO_KILL_BUF,    ST_MACRO_MARK_BUF,    ST_MACRO_OPEN_FILE,    _______,
+	_______, ST_MACRO_QR,    ST_MACRO_MARK_BUF,    ST_MACRO_KILL_BUF,    ST_MACRO_JOIN_LINE,    _______,
 	KC_SYSTEM_SLEEP, KC_PWR, DM_REC1, DM_REC2,
 	_______, DM_RSTP, _______, _______
 	),
-      [L_MEDIA] = LAYOUT(
+      [L_MEDIA] = LAYOUT_split_3x6_4(
 	_______, _______, KC_MEDIA_PREV_TRACK,KC_AUDIO_VOL_UP,KC_MEDIA_NEXT_TRACK,_______,
 	_______, _______, _______, _______, _______, _______,
 	_______, _______, KC_MEDIA_PLAY_PAUSE,KC_AUDIO_VOL_DOWN,KC_MEDIA_STOP,  _______,
@@ -144,17 +145,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	_______, _______, _______, _______,
 	_______, _______, _______, _______
 	),
-    [L_NUMBERS] = LAYOUT(
+    [L_NUMBERS] = LAYOUT_split_3x6_4(
 	_______, _______, _______, _______, _______, _______,
 	_______, KC_7,    KC_8,    KC_9,    KC_ASTR, _______,
 	_______, _______, _______, _______, _______, _______,
 	_______, KC_4,    KC_5,    KC_6,    KC_DOT, KC_MINUS,
 	_______, _______, _______, _______, _______, _______,
 	_______, KC_1,    KC_2,    KC_3,    KC_SLASH,_______,
-	_______, _______, KC_DOT, _______,
+	_______, _______, _______, _______,
 	KC_EQUAL, _______, KC_0,    KC_PLUS
 	),
-    [L_ONEHAND] = LAYOUT(
+    [L_ONEHAND] = LAYOUT_split_3x6_4(
 	_______, KC_WWW_FORWARD, KC_HOME, KC_WH_U, KC_END, ST_MACRO_ZOOMOUT,
         _______, _______, _______, _______, _______, _______,
 	_______, KC_WWW_BACK, KC_BTN3, KC_BTN1, KC_BTN2, ST_MACRO_ZOOMIN,
@@ -277,6 +278,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case ST_MACRO_OPEN_FILE:
 	if (record->event.pressed) {
 	    SEND_STRING(SS_RCTL(SS_TAP(X_X)) SS_DELAY(MACRO_DELAY) SS_RCTL(SS_TAP(X_F)));
+	}
+	break;
+    case ST_MACRO_SWITCH_BUF:
+	if (record->event.pressed) {
+	    SEND_STRING(SS_RCTL(SS_TAP(X_X)) SS_DELAY(MACRO_DELAY) SS_TAP(X_B));
 	}
 	break;
     }
