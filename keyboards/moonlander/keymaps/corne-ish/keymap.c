@@ -58,8 +58,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	KC_MS_BTN2, MT(MOD_RGUI,KC_Y),     LT(5,KC_U),     LT(2,KC_I),     LT(3,KC_O), KC_P,  _______,
 	SW_WIN,MT(MOD_LSFT, KC_A),MT(MOD_LALT, KC_S),MT(MOD_LCTL, KC_D),LT(1,KC_F),     LT(4,KC_G),     KC_MS_BTN1,
 	KC_MS_BTN1, LT(4,KC_H),     LT(1,KC_J),     MT(MOD_RCTL, KC_K),MT(MOD_RALT, KC_L),MT(MOD_RSFT, KC_SCLN),ST_MACRO_RAR_N,
-	NUMWORD, KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,
-	KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       CW_TOGG,
+	NUMWORD, KC_Z,           KC_X,           MT(MOD_MEH,KC_C),           KC_V,           KC_B,
+	KC_N,           KC_M,           MT(MOD_MEH,KC_COMMA),       KC_DOT,         KC_SLASH,       CW_TOGG,
 	_______, _______,       KC_PGUP, KC_PGDN, OSM(MOD_LSFT),  TG(L_ONEHAND),
 	_______, OSM(MOD_RSFT), KC_DOWN,    KC_UP,   _______,        _______,
 	KC_ENTER,       KC_BSPC,        _______,                 _______, KC_TAB,         KC_SPACE
@@ -88,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	_______, KC_1,           KC_2,           KC_3,           KC_SLASH,       _______,
 	QK_BOOT,        _______, KC_PSCR,        KC_DELETE,      KC_APP,  _______,
 	_______, KC_0,           KC_PLUS,         KC_EQUAL,       _______, KC_CAPS,
-	KC_DOT, _______, _______,                 _______, _______, ST_MACRO_RAR
+	_______, _______, _______,                 _______, _______, ST_MACRO_RAR
 	),
     [L_FNMOUSE] = LAYOUT_moonlander(
 	_______, _______, _______, _______, _______, _______, _______,
@@ -107,11 +107,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	_______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______,
 	_______, _______, _______, DM_PLY1, DM_PLY2, MOON_LED_LEVEL, _______,
-	_______, _______, ST_MACRO_LANG, _______,     _______, _______,     _______,
+	_______, _______, ST_MACRO_UNDO, _______,     _______, _______,     _______,
 	_______, _______, _______, _______, _______, _______, _______,
-	_______, _______, ST_MACRO_QR,     ST_MACRO_UNDO,     ST_MACRO_GOTO,     ST_MACRO_SAVE_FILE,    _______,
+	_______, _______, ST_MACRO_QR,     ST_MACRO_GOTO,     ST_MACRO_OPEN_FILE,     ST_MACRO_SAVE_FILE,    _______,
 	_______, _______, _______, _______, _______, _______,
-	_______, ST_MACRO_JOIN_LINE,    ST_MACRO_KILL_BUF,    ST_MACRO_MARK_BUF,    ST_MACRO_OPEN_FILE,    _______,
+	_______, ST_MACRO_JOIN_LINE,    ST_MACRO_KILL_BUF,    ST_MACRO_MARK_BUF,    ST_MACRO_LANG,    _______,
 	_______, _______, KC_SYSTEM_SLEEP, KC_PWR, MAC_LOCK, _______,
 	_______, _______, _______, _______, _______, _______,
 	DM_REC1, DM_REC2, _______,                 _______, _______, DM_RSTP
