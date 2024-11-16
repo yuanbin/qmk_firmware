@@ -26,6 +26,7 @@ enum custom_keycodes {
     ST_MACRO_KILL_BUF,
     ST_MACRO_MARK_BUF,
     ST_MACRO_OPEN_FILE,
+    ST_MACRO_SWITCH_BUF,
     MAC_SPOTLIGHT,
     MAC_LOCK,
 };
@@ -60,8 +61,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	KC_MS_BTN1, LT(4,KC_H),     LT(1,KC_J),     MT(MOD_RCTL, KC_K),MT(MOD_RALT, KC_L),MT(MOD_RSFT, KC_SCLN),ST_MACRO_RAR_N,
 	NUMWORD, KC_Z,           KC_X,           MT(MOD_MEH,KC_C),           KC_V,           KC_B,
 	KC_N,           KC_M,           MT(MOD_MEH,KC_COMMA),       KC_DOT,         KC_SLASH,       CW_TOGG,
-	_______, _______,       KC_PGUP, KC_PGDN, OSM(MOD_LSFT),  TG(L_ONEHAND),
-	_______, OSM(MOD_RSFT), KC_DOWN,    KC_UP,   _______,        _______,
+	_______, _______,       KC_MS_BTN2, KC_MS_BTN1, OSM(MOD_LSFT),  TG(L_ONEHAND),
+	_______, OSM(MOD_RSFT), KC_MS_BTN1,    KC_MS_BTN2,   _______,        _______,
 	KC_ENTER,       KC_BSPC,        _______,                 _______, KC_TAB,         KC_SPACE
 	),
     [L_SYMBOLS] = LAYOUT_moonlander(
@@ -107,11 +108,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	_______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______,
 	_______, _______, _______, DM_PLY1, DM_PLY2, MOON_LED_LEVEL, _______,
-	_______, _______, ST_MACRO_UNDO, _______,     _______, _______,     _______,
+	_______, _______, RALT(KC_S), ST_MACRO_UNDO,  LCTL(LALT(KC_J)), ST_MACRO_LANG,     _______,
 	_______, _______, _______, _______, _______, _______, _______,
-	_______, _______, ST_MACRO_QR,     ST_MACRO_GOTO,     ST_MACRO_OPEN_FILE,     ST_MACRO_SAVE_FILE,    _______,
+	_______, _______, ST_MACRO_GOTO,     ST_MACRO_SWITCH_BUF,     ST_MACRO_OPEN_FILE,     ST_MACRO_SAVE_FILE,    _______,
 	_______, _______, _______, _______, _______, _______,
-	_______, ST_MACRO_JOIN_LINE,    ST_MACRO_KILL_BUF,    ST_MACRO_MARK_BUF,    ST_MACRO_LANG,    _______,
+	_______, ST_MACRO_QR,    ST_MACRO_MARK_BUF,    ST_MACRO_KILL_BUF,    ST_MACRO_JOIN_LINE,   _______,
 	_______, _______, KC_SYSTEM_SLEEP, KC_PWR, MAC_LOCK, _______,
 	_______, _______, _______, _______, _______, _______,
 	DM_REC1, DM_REC2, _______,                 _______, _______, DM_RSTP
@@ -252,6 +253,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case ST_MACRO_OPEN_FILE:
 	if (record->event.pressed) {
 	    SEND_STRING(SS_RCTL(SS_TAP(X_X)) SS_DELAY(MACRO_DELAY) SS_RCTL(SS_TAP(X_F)));
+	}
+	break;
+    case ST_MACRO_SWITCH_BUF:
+	if (record->event.pressed) {
+	    SEND_STRING(SS_RCTL(SS_TAP(X_X)) SS_DELAY(MACRO_DELAY) SS_TAP(X_B));
 	}
 	break;
     case MAC_SPOTLIGHT:
