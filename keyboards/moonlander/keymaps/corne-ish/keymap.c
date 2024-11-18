@@ -53,10 +53,10 @@ enum layers {
 */
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [L_BASE] = LAYOUT_moonlander(
-	_______, _______, _______, _______, _______, _______, _______,
-	_______, _______, _______, _______, _______, _______, _______,
+	KC_MS_BTN3, KC_MS_BTN2, KC_MS_BTN1, ST_MACRO_ZOOMIN, ST_MACRO_ZOOMOUT, ST_MACRO_ZOOM_RESET, _______,
+	_______, KC_AUDIO_MUTE, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, KC_MS_BTN1, KC_MS_BTN2, KC_MS_BTN3,
 	KC_ESCAPE, KC_Q,     LT(3,KC_W),     LT(2,KC_E),     LT(5,KC_R), MT(MOD_LGUI,KC_T),  KC_MS_BTN2,
-	KC_MS_BTN2, MT(MOD_RGUI,KC_Y),     LT(5,KC_U),     LT(2,KC_I),     LT(3,KC_O), KC_P,  _______,
+	KC_MS_BTN2, MT(MOD_RGUI,KC_Y),     LT(5,KC_U),     LT(2,KC_I),     LT(3,KC_O), KC_P,  KC_DEL,
 	SW_WIN,MT(MOD_LSFT, KC_A),MT(MOD_LALT, KC_S),MT(MOD_LCTL, KC_D),LT(1,KC_F),     LT(4,KC_G),     KC_MS_BTN1,
 	KC_MS_BTN1, LT(4,KC_H),     LT(1,KC_J),     MT(MOD_RCTL, KC_K),MT(MOD_RALT, KC_L),MT(MOD_RSFT, KC_SCLN),ST_MACRO_RAR_N,
 	NUMWORD, KC_Z,           KC_X,           MT(MOD_MEH,KC_C),           KC_V,           KC_B,
