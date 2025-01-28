@@ -26,7 +26,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* #define MASTER_RIGHT */
 // #define EE_HANDS
 
-#define IS_SPLIT_KEYBOARD
+/*
+  This macro must not be defined for the Torn otherwise features
+  * depending on hand detection (eg. Achordion) will fail.
+  */
+/* #define IS_SPLIT_KEYBOARD */
 
 
 #define ACHORDION_STREAK

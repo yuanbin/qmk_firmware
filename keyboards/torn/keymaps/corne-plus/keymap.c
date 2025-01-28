@@ -16,7 +16,7 @@
 
 #include QMK_KEYBOARD_H
 #include "version.h"
-/* #include "features/achordion.h" */
+#include "features/achordion.h"
 #include "features/swapper.h"
 #include "features/num_word.h"
 #define MACRO_DELAY 20
@@ -183,17 +183,17 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     return state;
 }
 
-/* void matrix_scan_user(void) { */
-/*     achordion_task(); */
-/* } */
+void housekeeping_task_user(void) {
+    achordion_task();
+}
 
 bool sw_win_active = false;
 bool sw_tab_active = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
-    /* if (!process_achordion(keycode, record)) */
-    /*     return false; */
+    if (!process_achordion(keycode, record))
+        return false;
     if (!update_swapper(&sw_win_active, KC_LALT, KC_TAB, SW_WIN, keycode, record))
         return false; /* has update, stop process */
     if (!process_record_num_word(NUMWORD, L_NUMBERS, keycode, record))

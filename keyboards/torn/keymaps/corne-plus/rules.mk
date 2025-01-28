@@ -21,7 +21,7 @@ CAPS_WORD_ENABLE = yes
 
 SRC += features/swapper.c
 SRC += features/num_word.c
-#SRC += features/achordion.c
+SRC += features/achordion.c
 
 # If you want to change the display of OLED, you need to change here
 # SRC +=  ./lib/rgb_state_reader.c \
