@@ -15,8 +15,11 @@ DYNAMIC_MACRO_ENABLE = yes
 #RGB_MATRIX_ENABLE = yes
 ENCODER_MAP_ENABLE = yes
 CAPS_WORD_ENABLE = yes
+REPEAT_KEY_ENABLE = yes
 
+#right half
 #BOOTLOADER = caterina
+#left half
 #BOOTLOADER = atmel-dfu
 
 SRC += features/swapper.c
