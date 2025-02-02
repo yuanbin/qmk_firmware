@@ -86,10 +86,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
 
     [L_BASE] = LAYOUT(
-	KC_ESCAPE,          KC_Q,         LT(3,KC_W),     LT(2,KC_E),   LT(5,KC_R),   MT(MOD_LGUI,KC_T),
+	QK_REP,          KC_Q,         LT(3,KC_W),     LT(2,KC_E),   LT(5,KC_R),   MT(MOD_LGUI,KC_T),
 	MT(MOD_RGUI,KC_Y),  LT(5,KC_U),   LT(2,KC_I),     LT(3,KC_O),   KC_P,         KC_DEL,
 	SW_WIN,     MT(MOD_LSFT, KC_A), MT(MOD_LALT, KC_S), MT(MOD_LCTL, KC_D), LT(1,KC_F),            LT(4,KC_G),
-        LT(4,KC_H), LT(1,KC_J),         MT(MOD_RCTL, KC_K), MT(MOD_RALT, KC_L), MT(MOD_RSFT, KC_SCLN), ST_MACRO_RAR_N,
+        LT(4,KC_H), LT(1,KC_J),         MT(MOD_RCTL, KC_K), MT(MOD_RALT, KC_L), MT(MOD_RSFT, KC_SCLN), KC_ESCAPE,
 	NUMWORD, KC_Z,  KC_X, MT(MOD_MEH,KC_C),     KC_V,   KC_B,
 	KC_N,  KC_M, MT(MOD_MEH,KC_COMMA), KC_DOT, KC_SLASH, CW_TOGG,
         KC_MS_BTN1, OSM(MOD_LSFT), KC_ENTER,      KC_BSPC,
@@ -126,11 +126,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	_______, _______, _______, _______
 	),
       [L_MACSYS] = LAYOUT(
-        _______, _______, _______, _______, _______, _______,
+	_______, MEH(KC_Z), MEH(KC_F9), MEH(KC_F8), MEH(KC_F7), MEH(KC_F12),
 	_______, RALT(KC_S), ST_MACRO_UNDO,  LCTL(LALT(KC_J)), ST_MACRO_LANG,  _______,
-	_______, _______, _______, _______, _______, _______,
+        _______, MEH(KC_Y), MEH(KC_F6), MEH(KC_F5), MEH(KC_F4), MEH(KC_F11),
 	_______, ST_MACRO_GOTO,     ST_MACRO_SWITCH_BUF,     ST_MACRO_OPEN_FILE,     ST_MACRO_SAVE_FILE,    _______,
-	_______, _______, _______, _______, _______, _______,
+        _______, MEH(KC_X), MEH(KC_F3), MEH(KC_F2), MEH(KC_F1), MEH(KC_F10),
 	_______, ST_MACRO_QR,    ST_MACRO_MARK_BUF,    ST_MACRO_KILL_BUF,    ST_MACRO_JOIN_LINE,    _______,
 	KC_SYSTEM_SLEEP, KC_PWR, _______, _______,
 	_______, _______, _______, _______
@@ -194,7 +194,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     if (!process_achordion(keycode, record))
         return false;
-    if (!update_swapper(&sw_win_active, KC_LALT, KC_TAB, SW_WIN, keycode, record))
+    if (!update_swapper(&sw_win_active, KC_LGUI, KC_TAB, SW_WIN, keycode, record))
         return false; /* has update, stop process */
     if (!process_record_num_word(NUMWORD, L_NUMBERS, keycode, record))
         return false;

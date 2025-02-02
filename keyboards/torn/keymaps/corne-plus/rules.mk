@@ -15,6 +15,7 @@ MOUSEKEY_ENABLE = yes        # Mouse keys
 #RGB_MATRIX_ENABLE = yes
 ENCODER_MAP_ENABLE = no
 CAPS_WORD_ENABLE = yes
+REPEAT_KEY_ENABLE = yes
 
 #BOOTLOADER = caterina
 #BOOTLOADER = atmel-dfu
