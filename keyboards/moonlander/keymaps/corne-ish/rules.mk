@@ -7,6 +7,7 @@ RGB_MATRIX_CUSTOM_KB = yes
 DYNAMIC_MACRO_ENABLE = yes
 SPACE_CADET_ENABLE = no
 CAPS_WORD_ENABLE = yes
+REPEAT_KEY_ENABLE = yes
 
 SRC += features/swapper.c
 SRC += features/num_word.c
