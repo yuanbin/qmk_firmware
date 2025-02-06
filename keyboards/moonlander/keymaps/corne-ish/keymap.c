@@ -115,7 +115,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	_______, ST_MACRO_QR,    ST_MACRO_MARK_BUF,    ST_MACRO_KILL_BUF,    ST_MACRO_JOIN_LINE,   _______,
 	_______, _______, MOON_LED_LEVEL, KC_SYSTEM_SLEEP, MAC_LOCK, _______,
 	_______,  DM_RSTP, _______, _______, _______, _______,
-	DM_PLY1, DM_PLY2, _______,                 _______, DM_REC1, DM_REC2
+	DM_PLY2, DM_PLY1, _______,                 _______, DM_REC1, DM_REC2
 	),
     [L_MEDIA] = LAYOUT_moonlander(
 	_______, _______, _______, _______, _______, _______, _______,
