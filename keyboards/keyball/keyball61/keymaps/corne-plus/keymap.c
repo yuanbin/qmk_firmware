@@ -55,7 +55,8 @@ enum layers {
     L_MACSYS,
     L_MEDIA,
     L_NUMBERS,
-    L_ONEHAND
+    //    L_ONEHAND,
+    L_AUTO_MOUSE
 };
 
 /*
@@ -102,8 +103,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	MT(MOD_RGUI,KC_Y),  LT(5,KC_U),   LT(2,KC_I),     LT(3,KC_O),   KC_P,         KC_DEL,
 	SW_WIN,     MT(MOD_LSFT, KC_A), MT(MOD_LALT, KC_S), MT(MOD_LCTL, KC_D), LT(1,KC_F),            LT(4,KC_G),
         LT(4,KC_H), LT(1,KC_J),         MT(MOD_RCTL, KC_K), MT(MOD_RALT, KC_L), MT(MOD_RSFT, KC_SCLN), KC_ESCAPE,
-	NUMWORD, KC_Z,  KC_X, MT(MOD_MEH,KC_C),     KC_V,   KC_B, TG(L_ONEHAND),
-	KC_MUTE, KC_N,  KC_M, MT(MOD_MEH,KC_COMMA), KC_DOT, KC_SLASH, CW_TOGG,
+	NUMWORD, KC_Z,  KC_X, MT(MOD_MEH,KC_C),     KC_V,   KC_B, KC_MS_BTN1,
+	OSM(MOD_RSFT), KC_N,  KC_M, MT(MOD_MEH,KC_COMMA), KC_DOT, KC_SLASH, CW_TOGG,
 	_______, _______, _______, KC_MS_BTN1, OSM(MOD_LSFT), KC_ENTER,      KC_BSPC,
 	KC_TAB,  KC_SPACE,      OSM(MOD_RSFT), KC_MS_BTN1, _______, _______, _______
 	),
@@ -134,13 +135,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [L_FNMOUSE] = LAYOUT_universal(
 	_______, _______, _______, _______, _______, _______,
 	_______, _______, _______, _______, _______, _______,
-	_______, _______, KC_MS_WH_UP,  KC_MS_UP,       KC_MS_WH_DOWN, _______,
+        _______, SCRL_DVI, SCRL_DVD, SSNP_VRT, SSNP_FRE, SSNP_HOR,
 	KC_F12, KC_F7,          KC_F8,          KC_F9, KC_F15, _______,
-	_______, KC_MS_WH_LEFT,    KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    KC_MS_WH_RIGHT,
+        _______, _______, _______, _______, _______, _______,
 	KC_F11, KC_F4,          KC_F5,          KC_F6, KC_F14, _______,
-	_______, _______, _______, _______, _______, _______, _______,
+	_______, AML_TO, AML_I50, AML_D50, CPI_I100, CPI_D100, _______,
 	_______,KC_F10, KC_F1,          KC_F2,          KC_F3, KC_F13, _______,
-	_______, _______, _______, _______, KC_MS_BTN3,     KC_MS_BTN1,     KC_MS_BTN2,
+        _______, _______, _______, _______, _______, KBC_RST, KBC_SAVE,
 	_______, _______, _______, _______, _______, _______, _______
 	),
       [L_MACSYS] = LAYOUT_universal(
@@ -179,6 +180,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	_______, _______, _______, _______, _______, _______, _______,
 	KC_EQUAL, _______, KC_0,    KC_PLUS, _______, _______, _______
 	),
+#if 0
     [L_ONEHAND] = LAYOUT_universal(
 	_______, _______, _______, _______, _______, _______,
 	_______, _______, _______, _______, _______, _______,
@@ -187,6 +189,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	_______, KC_WWW_BACK, KC_BTN3, KC_BTN1, KC_BTN2, ST_MACRO_ZOOMIN,
         _______, _______, _______, _______, _______, _______,
 	_______, KC_WWW_HOME, KC_PGUP, KC_WH_D,    KC_PGDN, ST_MACRO_ZOOM_RESET, _______,
+        _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______
+	),
+#endif
+    [L_AUTO_MOUSE] = LAYOUT_universal(
+	_______, _______, _______, _______, _______, _______,
+	_______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,
+        _______, KC_MS_BTN3, KC_MS_BTN2, SCRL_MO, KC_MS_BTN1, _______,
+        _______, KC_MS_BTN1, SCRL_MO, KC_MS_BTN2, KC_MS_BTN3, _______,
+        _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______
@@ -208,6 +223,15 @@ void oledkit_render_info_user(void) {
     keyball_oled_render_keyinfo();
     keyball_oled_render_ballinfo();
     keyball_oled_render_layerinfo();
+}
+#endif
+
+#ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
+void pointing_device_init_user(void) {
+    // only required if AUTO_MOUSE_DEFAULT_LAYER is not set to index of <mouse_layer>
+    set_auto_mouse_layer(L_AUTO_MOUSE);
+    // always required before the auto mouse feature will work
+    set_auto_mouse_enable(true);
 }
 #endif
 
