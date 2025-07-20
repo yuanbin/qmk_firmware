@@ -42,8 +42,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	KC_ESCAPE, __BASE_L1__, _______, _______, __BASE_R1__, KC_DEL,
 	OSM(MOD_LSFT), __BASE_L2__, _______, _______, __BASE_R2__, OSM(MOD_RSFT),
 	NUMWORD, __BASE_L3__, __BASE_R3__, CW_TOGG,
-	_______, _______, _______, KC_MS_BTN1, SW_APP, _______,
-	_______, SW_WIN, _______, _______, _______, _______,
+	_______, _______, _______, KC_MS_BTN1, SW_WIN, _______,
+	_______, SW_APP, _______, _______, _______, _______,
 	__BASE_LT__, _______, _______, __BASE_RT__
 	),
     [L_SYMBOLS] = LAYOUT_wrapper(
